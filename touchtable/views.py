@@ -1,8 +1,13 @@
 from django.shortcuts import HttpResponse
+from django.template import RequestContext, loader
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, World")
 
-def test(request):
-    return HttpResponse("Hello, Test")
+from .models import TestModel
+def index( request ):
+    return HttpResponse( "Hello, World")
+
+def test( request ):
+    template = loader.get_template( 'simple.html' )
+    context  = RequestContext( request, { 'sometext': TestModel.objects.all()[ 0 ].name } )
+    return HttpResponse( template.render( context ) )

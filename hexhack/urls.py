@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'hexhack.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^touchtable/', include('touchtable.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
